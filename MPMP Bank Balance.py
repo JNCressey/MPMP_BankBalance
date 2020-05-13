@@ -35,7 +35,7 @@ def grading(b_N_minus_1):
     return N # this is the number of the day 10^6 balance is reached
 
 def test():
-    b_N_minus_1 = 271828
+    b_N_minus_1 = 618034 # should result in N=19
     print(f"b_N_minus_1 = {b_N_minus_1}")
     N = grading(b_N_minus_1)
     print(f"N = {N}")
