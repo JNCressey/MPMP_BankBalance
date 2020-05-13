@@ -77,7 +77,7 @@ I then looped over b_(N-1) values for the range 1 to 999999, each one generating
 ## *Excel*lent graph
 
 I opened the CSV with Excel and produced this graph from the data.
-![Chart of N against b_(N-1). The domain of b_(N-1) is 1 to 999999. The maximum point (618034,19) is circled and labelled.](https://github.com/JNCressey/MPMP_BankBalance/blob/master/Chart%20of%20N%20against%20b_(N-1).png)
+![Chart of N against b_(N-1). The domain of b_(N-1) is 1 to 999999. The maximum point (618034,19) is circled and labelled.](https://github.com/JNCressey/MPMP_BankBalance/blob/master/Chart%20of%20N%20against%20b_(N-1).png?raw=true)
 
 The greatest number of days we can score is 19 days. This is achieved for the case when b_(N-1) = 618034.
 
