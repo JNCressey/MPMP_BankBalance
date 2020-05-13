@@ -3,6 +3,8 @@
 This is my solution to one of Matt Parker's Maths Problems.
 See the video on YouTube for the problem: [MPMP: The 1 Million Bank Balance puzzle](https://www.youtube.com/watch?v=ILrqPpLpwpE)
 
+Files I mention creating in this writeup can be found in [the GitHub repository for this project.](https://github.com/JNCressey/MPMP_BankBalance)
+
 # Solution
 
 
