@@ -83,7 +83,7 @@ The greatest number of days we can score is 19 days. This is achieved for the ca
 
 ## Solution
 
-I tweaked the grading function slightly to provide an option to return the two starting deposits.
+I tweaked the grading function slightly to provide an option to return the last two valid balances it produces in the calculations. These are the two starting deposits. Deposit for day 1 = b_1; and deposit for day 2 = b_0. 
 
 The two starting deposits that achieve the score of 19 days are:
 
