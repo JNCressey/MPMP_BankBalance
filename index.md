@@ -5,6 +5,12 @@ See the video on YouTube for the problem: [MPMP: The 1 Million Bank Balance puzz
 
 # Solution
 
+
+## Solution outline
+
+This solution will work backwards from the condition that, on some day, the balance should equal 1 million (10^6). I will exhaust all the possible cases, and select the one with the greatest score (number of days from the two deposits when 10^6 is reached.)
+
+
 ## Evolution of the sequence
 
 The sequence evolves like the Fibonacci sequence: b_k = b_(k-1) + b_(k-2). ('b' for 'balance') (**1**)
@@ -74,12 +80,14 @@ I coded up the grading function in Python 3.8.
 
 I then looped over b_(N-1) values for the range 1 to 999999, each one generating an N value from the grading function. I recorded this data in a CSV file. 
 
+
 ## *Excel*lent graph
 
 I opened the CSV with Excel and produced this graph from the data.
 ![Chart of N against b_(N-1). The domain of b_(N-1) is 1 to 999999. The maximum point (618034,19) is circled and labelled.](https://github.com/JNCressey/MPMP_BankBalance/blob/master/Chart%20of%20N%20against%20b_(N-1).png?raw=true)
 
 The greatest number of days we can score is 19 days. This is achieved for the case when b_(N-1) = 618034.
+
 
 ## Solution
 
