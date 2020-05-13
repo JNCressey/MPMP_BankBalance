@@ -81,6 +81,11 @@ I opened the CSV with Excel and produced this graph from the data.
 
 The greatest number of days we can score is 19 days. This is achived for the case when b_(N-1) = 618034.
 
-## Follow up
+## Solution
 
-1. I will tweak the grading function to show the two starting deposits.
+I tweaked the grading function slightly to provide an option to return the two starting deposits.
+
+The two starting deposits that achieve the score of 19 days are:
+
+ - day 1: deposit 154
+ - day 2: deposit 144
