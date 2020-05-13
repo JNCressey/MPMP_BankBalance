@@ -68,11 +68,19 @@ let b_1 = b_k_plus_2 // this is the first day's deposit
 return N // this is the number of the day 10^6 balance is reached
 ```
 
-## Following up
+## Gathering data
 
-1. I will code up the grading function
+I coded up the grading function in Python 3.8.
 
-2. I will plot its results on a line graph against all the integers from 1 to 999999.
+I then looped over b_(N-1) values for the range 1 to 999999, each one generating an N value from the grading function. I recorded this data in a CSV file. 
 
-3. The highest point of the graph will be the solution for the days, and the grading function can be trivially tweaked to tell us the starting deposit values.
+## *Excel*lent graph
 
+I opened the CSV with Excel and produced this graph from the data.
+![Chart of N against b_(N-1). The domain of b_(N-1) is 1 to 999999. The maximum point (618034,19) is circled and labelled.](https://github.com/JNCressey/MPMP_BankBalance/blob/master/Chart%20of%20N%20against%20b_(N-1).png)
+
+The greatest number of days we can score is 19 days. This is achived for the case when b_(N-1) = 618034.
+
+## Follow up
+
+1. I will tweak the grading function to show the two starting deposits.
