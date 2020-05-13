@@ -12,45 +12,36 @@ def grading(b_N_minus_1, returnkey="N"):
     while (True):
         candidate_new_b_k = b_k_plus_1 - b_k
         if candidate_new_b_k > 0:
-            (
-                N,
-                b_k,
-                b_k_plus_1,
-                b_k_plus_2,
-            ) = (
-                N,
-                candidate_new_b_k,
-                b_k,
-                b_k_plus_1,
-            )
+            (   N,               b_k, b_k_plus_1, b_k_plus_2 ) = \
+            ( N+1, candidate_new_b_k,        b_k, b_k_plus_1 ) 
             if verbose>=2:
                 print(f"{(N, b_k, b_k_plus_1, b_k_plus_2,)}")
         else:
             break
-    # now b_k is tracked back as far as it can go
-    # and assuming k=0 implies N is our number of days
-    b_0 = b_k # this is the second day's deposit
+    # Now b_k is tracked back as far as it can go
+    # and assuming k=0 implies N is our number of days.
+    b_0 = b_k # This is the second day's deposit.
     d_2 = b_0
-    b_1 = b_k_plus_1 # this is the first day's deposit
+    b_1 = b_k_plus_1 # This is the first day's deposit.
     d_1 = b_1
     if verbose>=2:
-        print(f"b_0 = {b_0}") # this is the second day's deposit
-        print(f"b_1 = {b_1}") # this is the first day's deposit
+        print(f"b_0 = {b_0}")
+        print(f"b_1 = {b_1}")
     if returnkey=="N":
-        return N # this is the number of the day 10^6 balance is reached
+        return N
     elif returnkey=="d":
-        return (d_1, d_2) # this is (d_1, d_2)
+        return (d_1, d_2)
 
 
 def test():
-    b_N_minus_1 = 618034 # should result in N=19
+    b_N_minus_1 = 618034 # Should result in N=19.
     print(f"b_N_minus_1 = {b_N_minus_1}")
     N = grading(b_N_minus_1)
     print(f"N = {N}")
 
 
 def generate_data():
-    # create a file with the data series
+    # Create a file with the data series
     # of (b_N_minus_1, N) for 0<b_N_minus_1<10^6.
     import csv
     with open("data.csv",'w', newline='') as data_file:
