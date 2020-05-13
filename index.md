@@ -55,23 +55,22 @@ This function will take a candidate b_(N-1) and give us the grading of how many 
 let b_k_plus_2 = 10^6
 let b_k_plus_1 = __b_(N-1)__ // The argument to the function.
 let b_k = b_k_plus_2 - b_k_plus_1
-let N = 1 // When b_k is verified to be greater than 0, N will be set to 2. 
-          // That means that if k was taken to equal 0 then, b_2 would be the 10^6.
-while (b_k > 0){
-  let N = N + 1
-  // if k is taken to be 0 here, b_N is then the 10^6
-  let (b_k, b_k_plus_1, b_k_plus_2) = (b_k_plus_1 - b_k, b_k, b_k_plus_1) 
+let N = 2 // We wish to maintain the fact that assuming k=0 implies b_N=10^6.
+          // For the starting values here k+2=N; so N=2.
+loop until break {
+  let candidate_new_b_k = b_k_plus_1 - b_k
+  if ( candidate_new_b_k < 0 ) { 
+    break from the loop 
+  } else {
+    let (   N,               b_k, b_k_plus_1, b_k_plus_2 ) = 
+        ( N+1, candidate_new_b_k,        b_k, b_k_plus_1 ) 
       /* Calculated in the simultaneous tuple-packing/unpacking way 
          that Python would do this. */
-      /* the new b_k is b_(k-1) in the old step, so is calculated by
-         b_(k-1) = b_(k+1) - b_k by the previous step's labelling. */
+  }
 }
-// b_k is now one step too far back, thus k=-1.
-let b_0 = b_k_plus_1 // this is the second day's deposit
-let b_1 = b_k_plus_2 // this is the first day's deposit
-/* **Note:** N has not been incremented since the value we have for b_k_plus_1
-   was in the b_k slot, so N has its correct value relative to b_0 and b_1. */
-return N // this is the number of the day 10^6 balance is reached
+/* Now b_k is tracked back as far as it can go
+   and assuming k=0 implies N is our number of days. */
+return N
 ```
 
 ## Gathering data
