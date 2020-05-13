@@ -1,10 +1,10 @@
-verbose = False # debug prints
+verbose = 1 # debug prints
 
 def grading(b_N_minus_1):
     b_k_plus_2 = 1000000
     b_k_plus_1 = b_N_minus_1 # The argument to the function.
     b_k = b_k_plus_2 - b_k_plus_1
-    if verbose:
+    if verbose>=2:
         print(f"{(b_k, b_k_plus_1, b_k_plus_2,)}")
     N = 1   # When b_k is verified to be greater than 0, N will be set to 2. 
             # That means that if k was taken to equal 0 then,
@@ -23,10 +23,10 @@ def grading(b_N_minus_1):
         )
         # the new b_k is b_(k-1) in the old step, so is calculated by
         # b_(k-1) = b_(k+1) - b_k by the previous step's labelling.
-        if verbose:
+        if verbose>2:
             print(f"{(b_k, b_k_plus_1, b_k_plus_2,)}")
     # b_k is now one step too far back, thus k=-1.
-    if verbose:
+    if verbose>=2:
         print(f"b_0 = {b_k_plus_1}") # this is the second day's deposit
         print(f"b_1 = {b_k_plus_2}") # this is the first day's deposit
     # **Note:** N has not been incremented since the value we have for
@@ -41,4 +41,14 @@ def test():
     print(f"N = {N}")
 
 if __name__=="__main__":
-    test()
+    # create a file with the data series
+    # of (b_N_minus_1, N) for 0<b_N_minus_1<10^6.
+    import csv
+    with open("data.csv",'w', newline='') as data_file:
+        csv_out = csv.writer(data_file)
+        csv_out.writerow(("b_N_minus_1","N"))
+        for b_N_minus_1 in range(1,1000000):
+            if verbose>=1:
+                if b_N_minus_1 % 100000 == 0:
+                    print(b_N_minus_1)
+            csv_out.writerow((b_N_minus_1,grading(b_N_minus_1)))
