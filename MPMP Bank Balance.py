@@ -36,7 +36,7 @@ def grading(b_N_minus_1, returnkey="N"):
     if returnkey=="N":
         return N # this is the number of the day 10^6 balance is reached
     elif returnkey=="d":
-        return (b_k_plus_1, b_k_plus_2) # this is (d_1, d_2)
+        return (b_k_plus_2, b_k_plus_1) # this is (d_1, d_2)
 
 
 def test():
