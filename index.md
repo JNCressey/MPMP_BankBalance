@@ -55,13 +55,14 @@ while (b_k > 0){
   let N = N + 1
   // if k is taken to be 0 here, b_N is then the 10^6
   let (b_k, b_k_plus_1, b_k_plus_2) = (b_k_plus_2 - b_k_plus_1, b_k, b_k_plus_1) 
-      // Calculated in the symultaneous tuple-packing/unpacking way that Python would do this.
+      /* Calculated in the symultaneous tuple-packing/unpacking way 
+         that Python would do this. */
 }
 // b_k is now one step too far back, thus k=-1.
 let b_0 = b_k_plus_1 // this is the second day's deposit
 let b_1 = b_k_plus_2 // this is the first day's deposit
-// **Note:** N has not been incremented since the value we have for b_k_plus_1 was in the b_k slot, 
-// so N has its correct value relative to b_0 and b_1.
+/* **Note:** N has not been incremented since the value we have for b_k_plus_1
+   was in the b_k slot, so N has its correct value relative to b_0 and b_1. */
 return N // this is the number of the day 10^6 balance is reached
 ```
 
