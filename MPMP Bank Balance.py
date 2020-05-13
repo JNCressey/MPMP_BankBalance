@@ -1,42 +1,45 @@
-verbose = 1 # debug prints
+verbose = 2 # debug prints
 
 def grading(b_N_minus_1, returnkey="N"):
     # returnkey "N" for N to be returned, "d" for the two deposits to be returned
     b_k_plus_2 = 1000000
     b_k_plus_1 = b_N_minus_1 # The argument to the function.
     b_k = b_k_plus_2 - b_k_plus_1
+    N = 2   # We wish to maintain the fact that assuming k=0 implies b_N=10^6.
+            # For the starting values here k+2=N; so N=2.
     if verbose>=2:
-        print(f"{(b_k, b_k_plus_1, b_k_plus_2,)}")
-    N = 1   # When b_k is verified to be greater than 0, N will be set to 2. 
-            # That means that if k was taken to equal 0 then,
-            # b_2 would be the 10^6.
-    while (b_k > 0):
-        N += 1
-        # if k is taken to be 0 here, b_N is then the 10^6
-        (
-            b_k,
-            b_k_plus_1,
-            b_k_plus_2,
-        ) = (
-            b_k_plus_1 - b_k,
-            b_k,
-            b_k_plus_1,
-        )
-        # the new b_k is b_(k-1) in the old step, so is calculated by
-        # b_(k-1) = b_(k+1) - b_k by the previous step's labelling.
-        if verbose>2:
-            print(f"{(b_k, b_k_plus_1, b_k_plus_2,)}")
-    # b_k is now one step too far back, thus k=-1.
+        print(f"{(N, b_k, b_k_plus_1, b_k_plus_2,)}")
+    while (True):
+        candidate_new_b_k = b_k_plus_1 - b_k
+        if candidate_new_b_k > 0:
+            (
+                N,
+                b_k,
+                b_k_plus_1,
+                b_k_plus_2,
+            ) = (
+                N,
+                candidate_new_b_k,
+                b_k,
+                b_k_plus_1,
+            )
+            if verbose>=2:
+                print(f"{(N, b_k, b_k_plus_1, b_k_plus_2,)}")
+        else:
+            break
+    # now b_k is tracked back as far as it can go
+    # and assuming k=0 implies N is our number of days
+    b_0 = b_k # this is the second day's deposit
+    d_2 = b_0
+    b_1 = b_k_plus_1 # this is the first day's deposit
+    d_1 = b_1
     if verbose>=2:
-        print(f"b_0 = {b_k_plus_1}") # this is the second day's deposit
-        print(f"b_1 = {b_k_plus_2}") # this is the first day's deposit
-    # **Note:** N has not been incremented since the value we have for
-    # b_k_plus_1 was in the b_k slot, so N has its correct value
-    # relative to b_0 and b_1.
+        print(f"b_0 = {b_0}") # this is the second day's deposit
+        print(f"b_1 = {b_1}") # this is the first day's deposit
     if returnkey=="N":
         return N # this is the number of the day 10^6 balance is reached
     elif returnkey=="d":
-        return (b_k_plus_2, b_k_plus_1) # this is (d_1, d_2)
+        return (d_1, d_2) # this is (d_1, d_2)
 
 
 def test():
