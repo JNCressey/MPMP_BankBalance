@@ -95,5 +95,5 @@ I tweaked the grading function slightly to provide an option to return the last 
 
 The two starting deposits that achieve the score of 19 days are:
 
- - day 1: deposit 154
- - day 2: deposit 144
+ - day 1: deposit 144
+ - day 2: deposit 154
