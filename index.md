@@ -54,9 +54,11 @@ let N = 1 // When b_k is verified to be greater than 0, N will be set to 2.
 while (b_k > 0){
   let N = N + 1
   // if k is taken to be 0 here, b_N is then the 10^6
-  let (b_k, b_k_plus_1, b_k_plus_2) = (b_k_plus_2 - b_k_plus_1, b_k, b_k_plus_1) 
+  let (b_k, b_k_plus_1, b_k_plus_2) = (b_k_plus_1 - b_k, b_k, b_k_plus_1) 
       /* Calculated in the simultaneous tuple-packing/unpacking way 
          that Python would do this. */
+      /* the new b_k is b_(k-1) in the old step, so is calculated by
+         b_(k-1) = b_(k+1) - b_k by the previous step's labelling. */
 }
 // b_k is now one step too far back, thus k=-1.
 let b_0 = b_k_plus_1 // this is the second day's deposit
