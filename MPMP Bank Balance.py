@@ -1,6 +1,7 @@
 verbose = 1 # debug prints
 
-def grading(b_N_minus_1):
+def grading(b_N_minus_1, returnkey="N"):
+    # returnkey "N" for N to be returned, "d" for the two deposits to be returned
     b_k_plus_2 = 1000000
     b_k_plus_1 = b_N_minus_1 # The argument to the function.
     b_k = b_k_plus_2 - b_k_plus_1
@@ -32,7 +33,11 @@ def grading(b_N_minus_1):
     # **Note:** N has not been incremented since the value we have for
     # b_k_plus_1 was in the b_k slot, so N has its correct value
     # relative to b_0 and b_1.
-    return N # this is the number of the day 10^6 balance is reached
+    if returnkey=="N":
+        return N # this is the number of the day 10^6 balance is reached
+    elif returnkey=="d":
+        return (b_k_plus_1, b_k_plus_2) # this is (d_1, d_2)
+
 
 def test():
     b_N_minus_1 = 618034 # should result in N=19
@@ -40,7 +45,8 @@ def test():
     N = grading(b_N_minus_1)
     print(f"N = {N}")
 
-if __name__=="__main__":
+
+def generate_data():
     # create a file with the data series
     # of (b_N_minus_1, N) for 0<b_N_minus_1<10^6.
     import csv
@@ -52,3 +58,8 @@ if __name__=="__main__":
                 if b_N_minus_1 % 100000 == 0:
                     print(b_N_minus_1)
             csv_out.writerow((b_N_minus_1,grading(b_N_minus_1)))
+
+if __name__=="__main__":
+    optimal_b_N_minus_1 = 618034
+    (d_1,d_2) = grading(optimal_b_N_minus_1,returnkey="d")
+    print(f"Maximum days 19 achieved when d_1={d_1}, d_2={d_2}")
