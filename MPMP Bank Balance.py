@@ -7,6 +7,8 @@ def grading(b_N_minus_1, returnkey="N"):
     b_k = b_k_plus_2 - b_k_plus_1
     N = 2   # We wish to maintain the fact that assuming k=0 implies b_N=10^6.
             # For the starting values here k+2=N; so N=2.
+            # Assuming b_N_minus_1 in the non-inclusive range (0,10^6) 
+            # implies that this b_k is valid.
     if verbose>=2:
         print(f"{(N, b_k, b_k_plus_1, b_k_plus_2,)}")
     while (True):
