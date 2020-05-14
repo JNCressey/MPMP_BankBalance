@@ -59,9 +59,11 @@ let b_k_plus_1 = __b_(N-1)__ // The argument to the function.
 let b_k = b_k_plus_2 - b_k_plus_1
 let N = 2 // We wish to maintain the fact that assuming k=0 implies b_N=10^6.
           // For the starting values here k+2=N; so N=2.
-loop until break {
+          /* Assuming b_N_minus_1 in the non-inclusive range (0,10^6) 
+             implies that this b_k is valid. */
+loop with only manual break for exit {
   let candidate_new_b_k = b_k_plus_1 - b_k
-  if ( candidate_new_b_k < 0 ) { 
+  if ( candidate_new_b_k <= 0 ) { 
     break from the loop 
   } else {
     let (   N,               b_k, b_k_plus_1, b_k_plus_2 ) = 
